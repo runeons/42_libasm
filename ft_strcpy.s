@@ -8,12 +8,20 @@
 	global		ft_strcpy
 	extern		printf
 
-          section	.text
+	section		.text
 ft_strcpy:
-
-count:	
-		mov	BYTE [rsi + 1], 122
-		
+		push	rbx
+		mov	rbx, 0
+	
+compare:
+		cmp	BYTE [rdi + rbx], 0	; check if dst[rbx]
+		je	exit			; if end of string
+		mov	cl, BYTE [rsi + rbx]	; store src[rbx]
+		mov	BYTE [rdi + rbx], cl	; replace dst[rbx]
+		inc	rbx
+		jmp	compare
 
 exit:
+		mov	rax, rdi
+		pop	rbx
 		ret
