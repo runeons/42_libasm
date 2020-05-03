@@ -5,11 +5,11 @@
 ;	ssize_t write(int fd, const void *buf, size_t count)
 ; ----------------------------------------------------------------------------------------
 
-	global		ft_write
+	global		ft_write2
 	extern		___error
 
 	section		.text
-ft_write:
+ft_write2:
 		mov	rax, 1
 		syscall			; now, rax = -14
 	; it means that ret value of write au niveau de l'assembleur is errno * -1
@@ -31,7 +31,7 @@ error:
 		
 		
 					; put rdi in ERRNO
-		mov	rax, -1	; set rax at -1
+		mov	rax, rdx	; set rax at -1
 		jmp	exit		; exit
 	
 exit:

@@ -26,18 +26,20 @@ int	main(void) {
 	printf("str : %p\n", str);
 	printf("&str : %p\n", &str);
 
+	printf("|ret : %zd\n", write(1, &str, 0));
+	printf("|ret : %zd\n", ft_write(1, &str, 0));
+	printf("\n");
 	errno = 0;
 	printf("|ret : %zd\n", write(1, &str, -1));
 	printf("errno : %i\n", errno);
 	printf("strerror : %s\n", strerror(errno));
+	perror("perror : ");
 	errno = 0;
 	printf("|ret : %zd\n", ft_write(1, &str, -1));
 	printf("errno : %i\n", errno);
 	printf("strerror : %s\n", strerror(errno));
+	perror("perror : ");
 	//printf("___errno : %i\n", error(errno));
-	printf("\n");
-	printf("|ret : %zd\n", write(1, &str, 0));
-	printf("|ret : %zd\n", ft_write(1, &str, 0));
 	printf("\n");
 	printf("|ret : %zd\n", write(1, &str, 1));
 	printf("|ret : %zd\n", ft_write(1, &str, 1));
