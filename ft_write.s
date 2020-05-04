@@ -6,8 +6,7 @@
 ; ----------------------------------------------------------------------------------------
 
 	global		ft_write
-	global		___error
-	extern		___error
+	extern		error
 
 	section		.text
 ft_write:
@@ -48,8 +47,14 @@ write:
 err:
 		neg	rax
 		mov	rbx, rax	; store errno in rbx (to use later)
-		;call	_error
-		;mov	rax, rbx
+	;	push	r8
+	;	push	r9
+	;	push	r10
+	;	call	error
+	;	pop	r10
+	;	pop	r9
+	;	pop	r8
+		mov	rax, rbx
 		jmp	exit_err
 
 exit_err:
