@@ -21,9 +21,15 @@ void	ft_putstr(char *str)
 }
 
 int	main(void) {
-	error(0, 9, "");
-	error(0, 14, "");
-	error(0, errno, "");
-	printf("%i : %s\n", errno, strerror(errno));
+
+	int	*err;
+	
+	err = NULL;
+	printf("%p\n", err);
+	err = __errno_location();
+	printf("%p - %d\n", err, *err);
+	*err = 14;
+	perror("");
+	printf("%d\n", errno);
 	return (0);
 }

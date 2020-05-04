@@ -22,7 +22,7 @@ call_fstat:
 		pop	rsi
 		pop	rdx
 		cmp	rax, -9		; error "Bad file descriptor"
-		jmp	err
+		jmp	err;
 
 ; ai-je vraiment besoin de check ca puisque write renvoie une erreur dans tous les cas ?
 ; quand j'appelle fstat, errno ne semble pas se mettre à jour une fois que j'ai quitté la fonction (contrairement à la vraie fonction write)
