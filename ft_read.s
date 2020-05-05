@@ -9,9 +9,9 @@
 	extern		__errno_location
 
 	section		.text
+
 ft_read:
 		push	rbx
-		jmp	read
 
 read:
 		mov	rax, 0

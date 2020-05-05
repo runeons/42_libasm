@@ -8,6 +8,7 @@
 	global		ft_strcpy
 
 	section		.text
+
 ft_strcpy:
 		push	rbx
 		mov	rbx, 0

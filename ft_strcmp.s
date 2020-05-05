@@ -8,6 +8,7 @@
 	global		ft_strcmp
 
 	section		.text
+
 ft_strcmp:
 		push	rbx			; holds counter
 		mov	rbx, 0

@@ -10,6 +10,7 @@
 	extern	malloc
 
           section	.text
+
 ft_strdup:
 
 store_len:

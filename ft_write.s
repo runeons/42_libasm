@@ -9,9 +9,9 @@
 	extern		__errno_location
 
 	section		.text
+
 ft_write:
 		push	rbx
-		jmp	write
 
 write:
 		mov	rax, 1
