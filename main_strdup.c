@@ -21,6 +21,26 @@ int	main(void) {
 	char	*str;
 	char	*str2;
 	char	*str3;
+	char	*tmp = NULL;
+	char	*tmp2 = NULL;
+
+	
+	printf("dup : %s\n", strdup(""));
+	printf("fdup : %s\n", ft_strdup(""));
+	printf("\n");
+	printf("dup : %s\n", strdup("hello"));
+	printf("fdup : %s\n", ft_strdup("hello"));
+	printf("\n");
+	tmp = "abc";
+	printf("dup : %s\n", strdup(tmp));
+	printf("fdup : %s\n", tmp2 = ft_strdup(tmp));
+	printf("fdup : %s\n", ft_strdup(tmp2));
+	printf("\n");
+	tmp = "";
+	printf("dup : %s\n", strdup(tmp));
+	printf("fdup : %s\n", tmp2 = ft_strdup(tmp));
+	printf("fdup : %s\n", ft_strdup(tmp2));
+	printf("\n");
 
 	if (!(str = malloc(sizeof(char) * 6)))
 		return (0);
@@ -36,13 +56,13 @@ int	main(void) {
 	printf("fdup : %s\n", ft_strdup(str));
 	printf("\n");
 
-/*
+
 	str2 = NULL;
 	printf("str : %s\n", str2);
-	printf("dup : %s\n", strdup(str2));
-	//printf("fdup : %s\n", ft_strdup(str2));
+	//printf("dup : %s\n", strdup(str2));
+	printf("fdup : %s\n", ft_strdup(str2));
 	printf("\n");
-*/	
+	
 	if (!(str2 = malloc(sizeof(char) * 0)))
 		return (0);
 	printf("str : %s\n", str2);

@@ -11,15 +11,15 @@
 
 ft_strcpy:
 		push	rbx
-		mov	rbx, 0
+		mov	rbx, 0			; holds counter
 	
-compare:
+replace:
 		cmp	BYTE [rsi + rbx], 0	; check if src[rbx]
-		mov	cl, BYTE [rsi + rbx]	; store src[rbx]
-		mov	BYTE [rdi + rbx], cl	; replace dst[rbx]
+		mov	cl, BYTE [rsi + rbx]	
+		mov	BYTE [rdi + rbx], cl	
 		je	exit			; if end of string
 		inc	rbx
-		jmp	compare
+		jmp	replace
 
 exit:
 		mov	rax, 0

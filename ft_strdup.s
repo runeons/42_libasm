@@ -6,12 +6,15 @@
 
 	global	ft_strdup
 	extern	ft_strlen
-;	extern	ft_strcpy
+	extern	ft_strcpy
 	extern	malloc
 
           section	.text
 
 ft_strdup:
+		cmp	rdi, 0
+		mov	rax, 0
+		je	exit
 
 store_len:
 		push	rbp
@@ -28,19 +31,21 @@ malloc_cpy:
 		je	exit
 		pop	rdi		; str(src) now back in rdi
 		mov	r8, 0		; counter
+		jmp	strcpy
 
-replace:
-		cmp	r8, rbx
-		je	exit
-		mov	cl, BYTE [rdi + r8]	; store src[r8]
-		mov	BYTE [rax + r8], cl	; replace dst[r8]
-		inc	r8
-		jmp	replace
+;replace:
+;		cmp	r8, rbx
+;		je	exit
+;		mov	cl, BYTE [rdi + r8]	; store src[r8]
+;		mov	BYTE [rax + r8], cl	; replace dst[r8]
+;		inc	r8
+;		jmp	replace
 
-;strcpy:
-;		mov	rsi, rdi	; put str in rsi (src)
-;		mov	rdi, rax	; put malloc ret str in rdi (dest)
-;		call	ft_strcpy	; supposed to copy src dans dest and return dest
-;
+strcpy:
+		mov	rsi, rdi	; put str in rsi (src)
+		mov	rdi, rax	; put malloc ret str in rdi (dest)
+		call	ft_strcpy	; supposed to copy src dans dest and return dest
+		jmp	exit
+
 exit:
 		ret

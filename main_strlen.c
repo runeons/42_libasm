@@ -7,6 +7,7 @@ int main(void) {
 	int	len;
 	str = NULL;
 	//len = strlen(str);
+	len = ft_strlen(str);
 	
 	printf("len : %zu\n", ft_strlen(""));
 	printf("len : %zu\n", strlen(""));

@@ -29,6 +29,7 @@ compare:
 
 exit:
 		sub	rcx, rdx
+		mov	rax, 0
 		mov	rax, rcx		; fill rax with (cl - dl)
 		cmp	rax, 0
 		jl	exit_less
