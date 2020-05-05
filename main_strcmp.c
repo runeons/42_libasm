@@ -18,40 +18,47 @@ void	ft_putstr(char *str)
 }
 
 int	main(void) {
-	char	dest[5] = "zab\0a";
-	char	src[7] = "zab\0b";
-	char	dest2[5] = "zab\0a";
-	char	src2[7] = "zab\0b";
+	printf("\n----------------------------------\n\n");
 
-	printf("STRCMP :\n");
-	printf("AVANT : \n");
-	ft_putstr(dest);
+	printf("cmp : %i\n", strcmp("zab", ""));
+	printf("fcmp : %i\n", ft_strcmp("zab", ""));
 	printf("\n");
-	ft_putstr(src);
+	printf("cmp : %i\n", strcmp("zab\0a", "zab\0b"));
+	printf("fcmp : %i\n", ft_strcmp("zab\0a", "zab\0b"));
+	printf("\n");
+	printf("cmp : %i\n", strcmp("abcdef", "abccef"));
+	printf("fcmp : %i\n", ft_strcmp("abcdef", "abccef"));
+	printf("\n");
+	printf("cmp : %i\n", strcmp("abc", "abcc"));
+	printf("fcmp : %i\n", ft_strcmp("abc", "abcc"));
+	printf("\n");
+	printf("cmp : %i\n", strcmp("abcc", "abc"));
+	printf("fcmp : %i\n", ft_strcmp("abcc", "abc"));
+	printf("\n");
+	printf("cmp : %i\n", strcmp("abcc", "abc\0"));
+	printf("fcmp : %i\n", ft_strcmp("abcc", "abc\0"));
+	printf("\n");
+	printf("cmp : %i\n", strcmp("abc", "abc\0e"));
+	printf("fcmp : %i\n", ft_strcmp("abc", "abc\0e"));
+	printf("\n");
+	printf("cmp : %i\n", strcmp("", ""));
+	printf("fcmp : %i\n", ft_strcmp("", ""));
+	printf("\n");
+	printf("cmp : %i\n", strcmp("\x01", "\x01"));
+	printf("fcmp : %i\n", ft_strcmp("\x01", "\x01"));
+	printf("\n");
+	printf("cmp : %i\n", strcmp("\x01\x02", "\x01\x02"));
+	printf("fcmp : %i\n", ft_strcmp("\x01\x02", "\x01\x02"));
+	printf("\n");
+	printf("cmp : %i\n", strcmp("\x01\x01", "\x01\x01"));
+	printf("fcmp : %i\n", ft_strcmp("\x01\x01", "\x01\x01"));
+	printf("\n");
+	printf("cmp : %i\n", strcmp("\x01\x01", "\x01\x02"));
+	printf("fcmp : %i\n", ft_strcmp("\x01\x01", "\x01\x02"));
+	printf("\n");
+	printf("cmp : %i\n", strcmp("", ""));
+	printf("fcmp : %i\n", ft_strcmp("", ""));
 	printf("\n");
 
-	printf("return value : %d\n", strcmp(dest, src));
-/*
-	printf("\nAPRES : \n");
-	ft_putstr(dest);
-	printf("\n");
-	ft_putstr(src);
-	printf("\n");
-*/
-	printf("\nFT_STRCMP :\n");
-	printf("AVANT : \n");
-	ft_putstr(dest2);
-	printf("\n");
-	ft_putstr(src2);
-	printf("\n");
-
-	printf("return value : %d\n", ft_strcmp(dest2, src2));
-/*
-	printf("\nAPRES : \n");
-	ft_putstr(dest2);
-	printf("\n");
-	ft_putstr(src2);
-	printf("\n");
-*/
 	return (0);
 }
