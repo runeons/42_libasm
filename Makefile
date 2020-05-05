@@ -19,11 +19,7 @@ OPTION = -I .
 all: $(NAME)
 
 $(NAME): $(SRC) $(OBJ)
-	$(ASM) $(AFLAGS) $<
-#	ar rcs $(NAME) $(OBJ)
-
-#%.o: %.s
-#	$(ASM) $(AFLAGS) $< -o $@
+	ar rcs $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)
