@@ -13,23 +13,10 @@ ft_read:
 		push	rbx
 		jmp	read
 
-check_fd:
-		push	rsi
-		push	rdx
-		mov	rax, 0		; syscall fstat
-		mov	rsi, 0
-		syscall
-		pop	rsi
-		pop	rdx
-		cmp	rax, -9
-		je	exit_err;
-
-check_cnt:
-
 read:
 		mov	rax, 0
 		syscall			
-		cmp	rax, 0		; if rax < 0
+		cmp	rax, 0			; if rax < 0
 		jl	exit_err
 		jmp	exit
 
