@@ -18,39 +18,18 @@ void	ft_putstr(char *str)
 }
 
 int	main(void) {
-	char	dest[10] = "abcdefghij";
-	char	src[6] = "hello";
-	char	dest2[10] = "abcdefjhij";
-	char	src2[6] = "hello";
+	char	buf[12] = {0};
+	char	buff[12] = {0};
 
-	printf("STRCPY :\n");
-	printf("AVANT : \n");
-	ft_putstr(dest);
+	
+	printf("cpy : %s\n", strcpy(buf, ""));
+	printf("fcpy : %s\n", ft_strcpy(buff, ""));
 	printf("\n");
-	ft_putstr(src);
+	printf("cpy : %s\n", strcpy(buf, "abc"));
+	printf("fcpy : %s\n", ft_strcpy(buff, "abc"));
 	printf("\n");
-
-	printf("return value : %s\n", strcpy(dest, src));
-
-	printf("\nAPRES : \n");
-	ft_putstr(dest);
-	printf("\n");
-	ft_putstr(src);
-	printf("\n");
-
-	printf("\nFT_STRCPY :\n");
-	printf("AVANT : \n");
-	ft_putstr(dest2);
-	printf("\n");
-	ft_putstr(src2);
-	printf("\n");
-
-	printf("return value : %s\n", ft_strcpy(dest2, src2));
-
-	printf("\nAPRES : \n");
-	ft_putstr(dest2);
-	printf("\n");
-	ft_putstr(src2);
+	printf("cpy : %s\n", strcpy(buf, "d\0ef"));
+	printf("fcpy : %s\n", ft_strcpy(buff, "d\0ef"));
 	printf("\n");
 	return (0);
 }

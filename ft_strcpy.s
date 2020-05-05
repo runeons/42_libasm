@@ -14,14 +14,15 @@ ft_strcpy:
 		mov	rbx, 0
 	
 compare:
-		cmp	BYTE [rdi + rbx], 0	; check if dst[rbx]
-		je	exit			; if end of string
+		cmp	BYTE [rsi + rbx], 0	; check if src[rbx]
 		mov	cl, BYTE [rsi + rbx]	; store src[rbx]
 		mov	BYTE [rdi + rbx], cl	; replace dst[rbx]
+		je	exit			; if end of string
 		inc	rbx
 		jmp	compare
 
 exit:
+		mov	rax, 0
 		mov	rax, rdi
 		pop	rbx
 		ret
