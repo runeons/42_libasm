@@ -12,6 +12,8 @@
 ft_strcpy:
 		push	rbx
 		mov	rbx, 0			; holds counter
+		cmp	rsi, 0
+		je	exit_err
 	
 replace:
 		cmp	BYTE [rsi + rbx], 0	; check if src[rbx]
@@ -24,5 +26,10 @@ replace:
 exit:
 		mov	rax, 0
 		mov	rax, rdi
+		pop	rbx
+		ret
+
+exit_err:
+		mov	rax, 0
 		pop	rbx
 		ret

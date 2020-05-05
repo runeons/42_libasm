@@ -12,6 +12,10 @@
 ft_strcmp:
 		push	rbx			; holds counter
 		mov	rbx, 0
+		cmp	rdi, 0
+		je	exit_err
+		cmp	rsi, 0
+		je	exit_err
 	
 compare:
 		mov	rcx, 0
@@ -44,5 +48,10 @@ exit_less:
 
 exit_greater:
 		mov	rax, 1
+		pop	rbx
+		ret
+
+exit_err:
+		mov	rax, 0
 		pop	rbx
 		ret
