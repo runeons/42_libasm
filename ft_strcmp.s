@@ -1,5 +1,5 @@
 ; ----------------------------------------------------------------------------------------
-;	char	*strcmp(char *dest, const char *src);
+;	int	ft_strcmp(const char *s1, const char *s2);
 ; ----------------------------------------------------------------------------------------
 
 		global	ft_strcmp
@@ -7,11 +7,11 @@
 		section	.text
 ft_strcmp:
 		push	rbx			; holds counter
-		mov	rbx, 0
 		cmp	rdi, 0
 		je	exit_err
 		cmp	rsi, 0
 		je	exit_err
+		mov	rbx, 0
 	
 compare:
 		mov	rcx, 0
@@ -19,31 +19,17 @@ compare:
 		mov	cl, BYTE [rdi + rbx]	; s1[rbx] in cl
 		mov	dl, BYTE [rsi + rbx]	; s2[rbx] in dl
 		cmp	cl, dl
-		jne	exit			; if not equal
+		jne	exit
 		cmp	cl, 0
-		je	exit			; if end of s1
+		je	exit
 		cmp	dl, 0
-		je	exit			; if end of s2
+		je	exit
 		inc	rbx
 		jmp	compare
 
 exit:
 		sub	rcx, rdx
-		mov	rax, 0
 		mov	rax, rcx		; fill rax with (cl - dl)
-		cmp	rax, 0
-		jl	exit_less
-		jg	exit_greater
-		pop	rbx
-		ret
-
-exit_less:
-		mov	rax, -1
-		pop	rbx
-		ret
-
-exit_greater:
-		mov	rax, 1
 		pop	rbx
 		ret
 
