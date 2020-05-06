@@ -6,7 +6,7 @@
 /*   By: tsantoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 19:30:12 by tsantoni          #+#    #+#             */
-/*   Updated: 2020/05/06 13:38:11 by tsantoni         ###   ########.fr       */
+/*   Updated: 2020/05/06 14:02:10 by tsantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,26 @@
 
 void	check_strlen(void)
 {
-	char	*str;
-	str = NULL;
+	char	s1[] = "";
+	char	s2[] = "\0";
+	char	s3[] = "ABC";
+	char	s4[] = "ABC\0EF";
+	char	s5[] = "0123456789012345678901234567890123456789012345678901234567890123456789";
 	
 	printf(GREEN "ft_strlen :"RESET"\n");
-	printf("	len : %zu\n", strlen(""));
-	printf("	len : %zu\n", ft_strlen(""));
-	printf("	len : %zu\n", strlen("A"));
-	printf("	len : %zu\n", ft_strlen("A"));
-	printf("	len : %zu\n", strlen("ABCD"));
-	printf("	len : %zu\n", ft_strlen("ABCD"));
-	printf("	len : %zu\n", strlen("0123456789012345678901234567890123456789012345678901234567890123456789"));
-	printf("	len : %zu\n", ft_strlen("0123456789012345678901234567890123456789012345678901234567890123456789"));
+	printf("	len : %zu\n", strlen(s1));
+	printf("	flen : %zu\n", ft_strlen(s1));
+	printf("	len : %zu\n", strlen(s2));
+	printf("	flen : %zu\n", ft_strlen(s2));
+	printf("	len : %zu\n", strlen(s3));
+	printf("	flen : %zu\n", ft_strlen(s3));
+	printf("	len : %zu\n", strlen(s4));
+	printf("	flen : %zu\n", ft_strlen(s4));
+	printf("	len : %zu\n", strlen(s5));
+	printf("	flen : %zu\n", ft_strlen(s5));
 	printf("	len : SEGMENTATION FAULT\n");
-	printf("	len : %zu\n", ft_strlen(str));
+	//printf("	len : %zu\n", strlen(NULL));
+	printf("	flen : %zu\n", ft_strlen(NULL));
 }
 
 void	check_strcpy(void)
@@ -51,22 +57,23 @@ void	check_strcpy(void)
 	printf("	 cpy: %s\n", strcpy(buf, "d\0ef"));
 	printf("	 fcpy: %s\n", ft_strcpy(buff, "d\0ef"));
 	printf("	 cpy: SEGMENTATION FAULT\n");
+	//printf("	 cpy: %s\n", strcpy(buff, NULL));
 	printf("	 fcpy: %s\n", ft_strcpy(buff, NULL));
 	printf("\n");
 }
 
 void	check_strcmp(void)
 {
-	char	s1[5] = "hello";
-	char	s2[10] = "helloworld";
-	char	s3[0] = "";
-	char	s4[7] = "hello\0a";
-	char	s5[7] = "hello\0b";
-	char	s6[6] = "hellow";
-	char	s7[1] = "\x01";
-	char	s8[2] = "\x01\x01";
-	char	s9[2] = "\x01\x02";
-	char	s0[2] = "\0";
+	char	s1[] = "hello";
+	char	s2[] = "helloworld";
+	char	s3[] = "";
+	char	s4[] = "hello\0a";
+	char	s5[] = "hello\0b";
+	char	s6[] = "hellow";
+	char	s7[] = "\x01";
+	char	s8[] = "\x01\x01";
+	char	s9[] = "\x01\x02";
+	char	s0[] = "\0";
 
 	printf("----------------------------------\n");
 	printf(GREEN "ft_strcmp :"RESET"\n");
@@ -140,7 +147,7 @@ void	check_write(void)
 	char	*str = NULL;
 	char	buf[11] = "abcdefghij";
 
-	fd = open("./test2", O_RDWR);
+	fd = open("./test", O_RDWR);
 	fd2 = open("./test", O_RDONLY);
 	
 	printf("----------------------------------\n");
@@ -608,50 +615,42 @@ void	check_read(void)
 
 void	check_strdup(void)
 {
-	char	*tmp = NULL;
-	char	*tmp2 = NULL;
+	char	s1[] = "abc";
+	char	s2[] = "abcdefghijklmnopqstuvwxyz";
+	char	s3[] = "";
+	char	s4[] = "\0";
+	char	s5[] = "abcd\0fgh";
 
 	printf("----------------------------------\n");
 	printf(GREEN"ft_strdup :"RESET"\n");
-	tmp = "abc";
-	printf("	dup : %s\n", strdup(tmp));
-	printf("	fdup : %s\n", tmp2 = ft_strdup(tmp));
-	printf("	fdup : %s\n", ft_strdup(tmp2));
+	printf("	dup : %s\n", strdup(s1));
+	printf("	fdup : %s\n", ft_strdup(s1));
 	printf("\n");
-	tmp = "abcdefghijklmnopqstuvwxyz";
-	printf("	dup : %s\n", strdup(tmp));
-	printf("	fdup : %s\n", tmp2 = ft_strdup(tmp));
-	printf("	fdup : %s\n", ft_strdup(tmp2));
+	printf("	dup : %s\n", strdup(s2));
+	printf("	fdup : %s\n", ft_strdup(s2));
 	printf("\n");
-	tmp = "";
-	printf("	dup : %s\n", strdup(tmp));
-	printf("	fdup : %s\n", tmp2 = ft_strdup(tmp));
-	printf("	fdup : %s\n", ft_strdup(tmp2));
+	printf("	dup : %s\n", strdup(s3));
+	printf("	fdup : %s\n", ft_strdup(s3));
 	printf("\n");
-	tmp = NULL;
 	printf("	dup : SEGMENTATION FAULT\n");
-	printf("	fdup : %s\n", tmp2 = ft_strdup(tmp));
-	printf("	fdup : %s\n", ft_strdup(tmp2));
+//	printf("	dup : %s\n", strdup(NULL));
+	printf("	fdup : %s\n", ft_strdup(NULL));
 	printf("\n");
-	tmp = "\0";
-	printf("	dup : %s\n", strdup(tmp));
-	printf("	fdup : %s\n", tmp2 = ft_strdup(tmp));
-	printf("	fdup : %s\n", ft_strdup(tmp2));
+	printf("	dup : %s\n", strdup(s4));
+	printf("	fdup : %s\n", ft_strdup(s4));
 	printf("\n");
-	tmp = "abcd\0fgh";
-	printf("	dup : %s\n", strdup(tmp));
-	printf("	fdup : %s\n", tmp2 = ft_strdup(tmp));
-	printf("	fdup : %s\n", ft_strdup(tmp2));
+	printf("	dup : %s\n", strdup(s5));
+	printf("	fdup : %s\n", ft_strdup(s5));
 	printf("\n");
 }
 
 int	main(void)
 {
-//	check_strlen();
-//	check_strcpy();
+	check_strlen();
+	check_strcpy();
 	check_strcmp();
-//	check_write();
-//	check_read();
-//	check_strdup();
+	check_write();
+	check_read();
+	check_strdup();
 	return (0);
 }
