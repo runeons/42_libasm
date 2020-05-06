@@ -6,7 +6,7 @@
 /*   By: tsantoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 19:30:12 by tsantoni          #+#    #+#             */
-/*   Updated: 2020/05/06 09:43:41 by tsantoni         ###   ########.fr       */
+/*   Updated: 2020/05/06 10:10:23 by tsantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,26 +57,42 @@ void	check_strcpy(void)
 
 void	check_strcmp(void)
 {
+	int	i;
+	char	s1[] = "hello";
+	char	s2[] = "helloworld";
+
+	i = 0;
 	printf("----------------------------------\n");
 	printf(GREEN "ft_strcmp :"RESET"\n");
+	printf("[0%i]\n", i++);
+	printf("	cmp : %i\n", strcmp(s1, s2));
+	printf("	fcmp : %i\n", ft_strcmp(s1, s2));
+	printf("[0%i]\n", i++);
+	printf("	cmp : %i\n", strcmp(s1, s1));
+	printf("	fcmp : %i\n", ft_strcmp(s1, s1));
+	printf("[0%i]\n", i++);
+	printf("	cmp : %i\n", strcmp(s2, s1));
+	printf("	fcmp : %i\n", ft_strcmp(s2, s1));
+	printf("[0%i]\n", i++);
 	printf("	cmp : %i\n", strcmp("zab", ""));
 	printf("	fcmp : %i\n", ft_strcmp("zab", ""));
-	printf("\n");
+	printf("[0%i]\n", i++);
 	printf("	cmp : %i\n", strcmp("zab\0a", "zab\0b"));
 	printf("	fcmp : %i\n", ft_strcmp("zab\0a", "zab\0b"));
-	printf("\n");
+	printf("[0%i]\n", i++);
 	printf("	cmp : %i\n", strcmp("abcdef", "abccef"));
 	printf("	fcmp : %i\n", ft_strcmp("abcdef", "abccef"));
-	printf("\n");
+	printf("[0%i]\n", i++);
 	printf("	cmp : %i\n", strcmp("abc", "abcc"));
 	printf("	fcmp : %i\n", ft_strcmp("abc", "abcc"));
-	printf("\n");
+	printf("[0%i]\n", i++);
 	printf("	cmp : %i\n", strcmp("abcc", "abc"));
 	printf("	fcmp : %i\n", ft_strcmp("abcc", "abc"));
-	printf("\n");
+	printf("[0%i]\n", i++);
 	printf("	cmp : %i\n", strcmp("abcc", "abc\0"));
 	printf("	fcmp : %i\n", ft_strcmp("abcc", "abc\0"));
 	printf("\n");
+/*
 	printf("	cmp : %i\n", strcmp("abc", "abc\0e"));
 	printf("	fcmp : %i\n", ft_strcmp("abc", "abc\0e"));
 	printf("\n");
@@ -104,7 +120,7 @@ void	check_strcmp(void)
 	printf("	cmp : SEGMENTATION FAULT\n");
 	printf("	fcmp : %i\n", ft_strcmp(NULL, ""));
 	printf("\n");
-	
+*/
 }
 
 void	check_write(void)
@@ -621,11 +637,11 @@ void	check_strdup(void)
 
 int	main(void)
 {
-	check_strlen();
-	check_strcpy();
+//	check_strlen();
+//	check_strcpy();
 	check_strcmp();
-	check_write();
-	check_read();
-	check_strdup();
+//	check_write();
+//	check_read();
+//	check_strdup();
 	return (0);
 }
