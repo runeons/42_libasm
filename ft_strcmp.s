@@ -1,14 +1,10 @@
 ; ----------------------------------------------------------------------------------------
-; To assemble and run:
-;	nasm -felf64 ft_strcmp.s && gcc main_strcmp.c ft_strcmp.o && ./a.out
-; Prototype:
 ;	char	*strcmp(char *dest, const char *src);
 ; ----------------------------------------------------------------------------------------
 
-	global		ft_strcmp
+		global	ft_strcmp
 
-	section		.text
-
+		section	.text
 ft_strcmp:
 		push	rbx			; holds counter
 		mov	rbx, 0

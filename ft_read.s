@@ -1,17 +1,14 @@
 ; ----------------------------------------------------------------------------------------
-; To assemble and run:
-;	nasm -felf64 ft_read.s && gcc main_read.c ft_read.o && ./a.out
-; Prototype:
 ;	ssize_t read(int fd, const void *buf, size_t count)
 ; ----------------------------------------------------------------------------------------
 
-	global		ft_read
-	extern		__errno_location
+		global	ft_read
+		extern	__errno_location
 
-	section		.text
-
+		section	.text
 ft_read:
 		push	rbx
+		mov	rbx, 0
 
 read:
 		mov	rax, 0

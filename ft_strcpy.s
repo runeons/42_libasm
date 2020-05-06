@@ -1,17 +1,14 @@
 ; ----------------------------------------------------------------------------------------
-; To assemble and run:
-;	nasm -felf64 ft_strcpy.s && gcc main_strcpy.c ft_strcpy.o && ./a.out
-; Prototype:
 ;	char	*strcpy(char *dest, const char *src);
 ; ----------------------------------------------------------------------------------------
 
-	global		ft_strcpy
+		global	ft_strcpy
 
-	section		.text
-
+		section	.text
 ft_strcpy:
 		push	rbx
 		mov	rbx, 0			; holds counter
+		mov	rcx, 0
 		cmp	rsi, 0
 		je	exit_err
 	

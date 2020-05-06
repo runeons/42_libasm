@@ -1,25 +1,23 @@
 ; ----------------------------------------------------------------------------------------
-; To assemble and run:
-;	 nasm -felf64 ft_strlen.s && nasm -felf64 ft_strdup.s && clang main_strdup.c ft_strlen.o ft_strdup.o && ./a.out
-;
+;	char	*ft_strdup(const char *s);
 ; ----------------------------------------------------------------------------------------
 
-	global	ft_strdup
-	extern	ft_strlen
-	extern	ft_strcpy
-	extern	malloc
+		global	ft_strdup
+		extern	ft_strlen
+		extern	ft_strcpy
+		extern	malloc
 
-          section	.text
-
+		section	.text
 ft_strdup:
 		cmp	rdi, 0
-		mov	rax, 0
+		mov	rax, 0		; protect if NULL
 		je	exit
 
 store_len:
 		push	rbp
 		call	ft_strlen
 		pop	rbp
+		mov	rbx, 0
 		mov	rbx, rax	; rbx holds len
 		inc	rbx		; rbx holds len + 1
 
@@ -30,21 +28,11 @@ malloc_cpy:
 		cmp	rax, 0		; protect malloc
 		je	exit
 		pop	rdi		; str(src) now back in rdi
-		mov	r8, 0		; counter
-		jmp	strcpy
-
-;replace:
-;		cmp	r8, rbx
-;		je	exit
-;		mov	cl, BYTE [rdi + r8]	; store src[r8]
-;		mov	BYTE [rax + r8], cl	; replace dst[r8]
-;		inc	r8
-;		jmp	replace
 
 strcpy:
-		mov	rsi, rdi	; put str in rsi (src)
-		mov	rdi, rax	; put malloc ret str in rdi (dest)
-		call	ft_strcpy	; supposed to copy src dans dest and return dest
+		mov	rsi, rdi	; src
+		mov	rdi, rax	; dst
+		call	ft_strcpy	
 		jmp	exit
 
 exit:

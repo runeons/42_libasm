@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tsantoni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/05 19:30:12 by tsantoni          #+#    #+#             */
+/*   Updated: 2020/05/06 08:54:40 by tsantoni         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "libasm.h"
 #include <stdio.h>
@@ -96,6 +108,7 @@ void	check_write(void)
 	int	fd;
 	int	fd2;
 	char	*str = NULL;
+	char	buf[8] = "abcdefgh";
 
 	fd = open("./test2", O_RDWR);
 	fd2 = open("./test", O_RDONLY);
@@ -104,194 +117,234 @@ void	check_write(void)
 	str = "abc";
 	// 9 : Bad file descriptor (RDONLY)
 	errno = 0;
-	printf("|wr : %zd\n", write(fd2, &str, 2));
+	printf("|wr : %zd\n", write(fd2, str, 2));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|wr : %zd\n", ft_write(fd2, &str, 2));
+	printf("|wr : %zd\n", ft_write(fd2, str, 2));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 
 	// 9 : Bad file descriptor (RANDOM)
 	errno = 0;
-	printf("|wr : %zd\n", write(4, &str, 3));
+	printf("|wr : %zd\n", write(4, str, 3));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|wr : %zd\n", ft_write(4, &str, 3));
+	printf("|wr : %zd\n", ft_write(4, str, 3));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 
 	// 14 : Bad address
 	errno = 0;
-	printf("|wr : %zd\n", write(fd, &str, -1));
+	printf("|wr : %zd\n", write(fd, str, -1));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|wr : %zd\n", ft_write(fd, &str, -1));
+	printf("|wr : %zd\n", ft_write(fd, str, -1));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 
 	// 0 : Write on file
 	errno = 0;
-	printf("|wr : %zd\n", write(fd, &str, 3));
+	printf("|wr : %zd\n", write(fd, str, 3));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|wr : %zd\n", ft_write(fd, &str, 3));
+	printf("|wr : %zd\n", ft_write(fd, str, 3));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 
 	printf(".............str = \"abc\"\n\n");
 	errno = 0;
-	printf("|wr : %zd\n", write(1, &str, 1));
+	printf("|wr : %zd\n", write(1, str, 1));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|wr : %zd\n", ft_write(1, &str, 1));
-	printf("%i : %s\n", errno, strerror(errno));
-	printf("\n");
-
-	errno = 0;
-	printf("|wr : %zd\n", write(1, &str, 3));
-	printf("%i : %s\n", errno, strerror(errno));
-	errno = 0;
-	printf("|wr : %zd\n", ft_write(1, &str, 3));
+	printf("|wr : %zd\n", ft_write(1, str, 1));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 
 	errno = 0;
-	printf("|wr : %zd\n", write(1, &str, 4));
+	printf("|wr : %zd\n", write(1, str, 3));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|wr : %zd\n", ft_write(1, &str, 4));
-	printf("%i : %s\n", errno, strerror(errno));
-	printf("\n");
-
-	errno = 0;
-	printf("|wr : %zd\n", write(1, &str, 5));
-	printf("%i : %s\n", errno, strerror(errno));
-	errno = 0;
-	printf("|wr : %zd\n", ft_write(1, &str, 5));
+	printf("|wr : %zd\n", ft_write(1, str, 3));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 
 	errno = 0;
-	printf("|wr : %zd\n", write(4, &str, 5));
+	printf("|wr : %zd\n", write(1, str, 4));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|wr : %zd\n", ft_write(4, &str, 5));
+	printf("|wr : %zd\n", ft_write(1, str, 4));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 
 	errno = 0;
-	printf("|wr : %zd\n", write(1, &str, -1));
+	printf("|wr : %zd\n", write(1, str, 5));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|wr : %zd\n", ft_write(1, &str, -1));
+	printf("|wr : %zd\n", ft_write(1, str, 5));
+	printf("%i : %s\n", errno, strerror(errno));
+	printf("\n");
+
+	errno = 0;
+	printf("|wr : %zd\n", write(4, str, 5));
+	printf("%i : %s\n", errno, strerror(errno));
+	errno = 0;
+	printf("|wr : %zd\n", ft_write(4, str, 5));
+	printf("%i : %s\n", errno, strerror(errno));
+	printf("\n");
+
+	errno = 0;
+	printf("|wr : %zd\n", write(1, str, -1));
+	printf("%i : %s\n", errno, strerror(errno));
+	errno = 0;
+	printf("|wr : %zd\n", ft_write(1, str, -1));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 
 	str = NULL;
 	printf(".............str = NULL\n\n");
 	errno = 0;
-	printf("|wr : %zd\n", write(1, &str, 0));
+	printf("|wr : %zd\n", write(1, str, 0));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|wr : %zd\n", ft_write(1, &str, 0));
-	printf("%i : %s\n", errno, strerror(errno));
-	printf("\n");
-
-	errno = 0;
-	printf("|wr : %zd\n", write(1, &str, 3));
-	printf("%i : %s\n", errno, strerror(errno));
-	errno = 0;
-	printf("|wr : %zd\n", ft_write(1, &str, 3));
+	printf("|wr : %zd\n", ft_write(1, str, 0));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 
 	errno = 0;
-	printf("|wr : %zd\n", write(1, &str, 4));
+	printf("|wr : %zd\n", write(1, str, 3));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|wr : %zd\n", ft_write(1, &str, 4));
-	printf("%i : %s\n", errno, strerror(errno));
-	printf("\n");
-
-	errno = 0;
-	printf("|wr : %zd\n", write(1, &str, 5));
-	printf("%i : %s\n", errno, strerror(errno));
-	errno = 0;
-	printf("|wr : %zd\n", ft_write(1, &str, 5));
+	printf("|wr : %zd\n", ft_write(1, str, 3));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 
 	errno = 0;
-	printf("|wr : %zd\n", write(4, &str, 5));
+	printf("|wr : %zd\n", write(1, str, 4));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|wr : %zd\n", ft_write(4, &str, 5));
+	printf("|wr : %zd\n", ft_write(1, str, 4));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 
 	errno = 0;
-	printf("|wr : %zd\n", write(1, &str, -1));
+	printf("|wr : %zd\n", write(1, str, 5));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|wr : %zd\n", ft_write(1, &str, -1));
+	printf("|wr : %zd\n", ft_write(1, str, 5));
+	printf("%i : %s\n", errno, strerror(errno));
+	printf("\n");
+
+	errno = 0;
+	printf("|wr : %zd\n", write(4, str, 5));
+	printf("%i : %s\n", errno, strerror(errno));
+	errno = 0;
+	printf("|wr : %zd\n", ft_write(4, str, 5));
+	printf("%i : %s\n", errno, strerror(errno));
+	printf("\n");
+
+	errno = 0;
+	printf("|wr : %zd\n", write(1, str, -1));
+	printf("%i : %s\n", errno, strerror(errno));
+	errno = 0;
+	printf("|wr : %zd\n", ft_write(1, str, -1));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 
 	str = "";
 	printf(".............str = \"\"\n\n");
 	errno = 0;
-	printf("|wr : %zd\n", write(1, &str, 0));
+	printf("|wr : %zd\n", write(1, str, 0));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|wr : %zd\n", ft_write(1, &str, 0));
-	printf("%i : %s\n", errno, strerror(errno));
-	printf("\n");
-
-	errno = 0;
-	printf("|wr : %zd\n", write(1, &str, 3));
-	printf("%i : %s\n", errno, strerror(errno));
-	errno = 0;
-	printf("|wr : %zd\n", ft_write(1, &str, 3));
+	printf("|wr : %zd\n", ft_write(1, str, 0));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 
 	errno = 0;
-	printf("|wr : %zd\n", write(1, &str, 4));
+	printf("|wr : %zd\n", write(1, str, 3));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|wr : %zd\n", ft_write(1, &str, 4));
-	printf("%i : %s\n", errno, strerror(errno));
-	printf("\n");
-
-	errno = 0;
-	printf("|wr : %zd\n", write(fd, &str, -1));
-	printf("%i : %s\n", errno, strerror(errno));
-	errno = 0;
-	printf("|wr : %zd\n", ft_write(fd, &str, -1));
+	printf("|wr : %zd\n", ft_write(1, str, 3));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 
 	errno = 0;
-	printf("|wr : %zd\n", write(1, &str, 5));
+	printf("|wr : %zd\n", write(1, str, 4));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|wr : %zd\n", ft_write(1, &str, 5));
-	printf("%i : %s\n", errno, strerror(errno));
-	printf("\n");
-
-	errno = 0;
-	printf("|wr : %zd\n", write(4, &str, 5));
-	printf("%i : %s\n", errno, strerror(errno));
-	errno = 0;
-	printf("|wr : %zd\n", ft_write(4, &str, 5));
+	printf("|wr : %zd\n", ft_write(1, str, 4));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 
 	errno = 0;
-	printf("|wr : %zd\n", write(1, &str, -1));
+	printf("|wr : %zd\n", write(fd, str, -1));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|wr : %zd\n", ft_write(1, &str, -1));
+	printf("|wr : %zd\n", ft_write(fd, str, -1));
+	printf("%i : %s\n", errno, strerror(errno));
+	printf("\n");
+
+	errno = 0;
+	printf("|wr : %zd\n", write(1, str, 5));
+	printf("%i : %s\n", errno, strerror(errno));
+	errno = 0;
+	printf("|wr : %zd\n", ft_write(1, str, 5));
+	printf("%i : %s\n", errno, strerror(errno));
+	printf("\n");
+
+	errno = 0;
+	printf("|wr : %zd\n", write(4, str, 5));
+	printf("%i : %s\n", errno, strerror(errno));
+	errno = 0;
+	printf("|wr : %zd\n", ft_write(4, str, 5));
+	printf("%i : %s\n", errno, strerror(errno));
+	printf("\n");
+
+	errno = 0;
+	printf("|wr : %zd\n", write(1, str, -1));
+	printf("%i : %s\n", errno, strerror(errno));
+	errno = 0;
+	printf("|wr : %zd\n", ft_write(1, str, -1));
+	printf("%i : %s\n", errno, strerror(errno));
+	printf("\n");
+
+	errno = 0;
+	printf("|wr : %zd\n", write(9809, "bonjour", 7));
+	printf("%i : %s\n", errno, strerror(errno));
+	errno = 0;
+	printf("|wr : %zd\n", ft_write(9809, "bonjour", 7));
+	printf("%i : %s\n", errno, strerror(errno));
+	printf("\n");
+
+	errno = 0;
+	printf("|wr : %zd\n", write(98123, "", 1));
+	printf("%i : %s\n", errno, strerror(errno));
+	errno = 0;
+	printf("|wr : %zd\n", ft_write(98123, "", 1));
+	printf("%i : %s\n", errno, strerror(errno));
+	printf("\n");
+
+	errno = 0;
+	printf("|wr : %zd\n", write(42, NULL, 7));
+	printf("%i : %s\n", errno, strerror(errno));
+	errno = 0;
+	printf("|wr : %zd\n", ft_write(42, NULL, 7));
+	printf("%i : %s\n", errno, strerror(errno));
+	printf("\n");
+
+	errno = 0;
+	printf("|wr : %zd\n", write(1, &buf, 7));
+	printf("%i : %s\n", errno, strerror(errno));
+	errno = 0;
+	printf("|wr : %zd\n", ft_write(1, &buf, 7));
+	printf("%i : %s\n", errno, strerror(errno));
+	printf("\n");
+
+	errno = 0;
+	printf("|wr : %zd\n", write(1, buf, 4));
+	printf("%i : %s\n", errno, strerror(errno));
+	errno = 0;
+	printf("|wr : %zd\n", ft_write(1, buf, 4));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 }
@@ -332,16 +385,16 @@ void	check_read(void)
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 
-/*
+
 	// Read stdin
 	errno = 0;
-	printf("|rd : %zd\n", read(1, &str, 5));
+	printf("|rd : %zd\n", read(1, &str, 25));
 	printf("%i : %s\n", errno, strerror(errno));
 	errno = 0;
-	printf("|rd : %zd\n", ft_read(1, &str, 5));
+	printf("|rd : %zd\n", ft_read(1, &str, 25));
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
-*/
+
 
 	fd = open("./Makefile", O_RDONLY);
 	printf(".............str = abc\n\n");
@@ -495,6 +548,30 @@ void	check_read(void)
 	printf("%i : %s\n", errno, strerror(errno));
 	printf("\n");
 	
+	char	buf[32];
+	errno = 0;
+	printf("|rd : %zd\n", read(98123, buf, 5));
+	printf("%i : %s\n", errno, strerror(errno));
+	errno = 0;
+	printf("|rd : %zd\n", ft_read(98123, buf, 5));
+	printf("%i : %s\n", errno, strerror(errno));
+	printf("\n");
+
+	errno = 0;
+	printf("|rd : %zd\n", read(fd, buf, 5));
+	printf("%i : %s\n", errno, strerror(errno));
+	errno = 0;
+	printf("|rd : %zd\n", ft_read(fd, buf, 5));
+	printf("%i : %s\n", errno, strerror(errno));
+	printf("\n");
+
+	errno = 0;
+	printf("|rd : %zd\n", read(42, NULL, 7));
+	printf("%i : %s\n", errno, strerror(errno));
+	errno = 0;
+	printf("|rd : %zd\n", ft_read(42, NULL, 7));
+	printf("%i : %s\n", errno, strerror(errno));
+	printf("\n");
 }
 
 void	check_strdup(void)
@@ -504,6 +581,11 @@ void	check_strdup(void)
 
 	printf("\n----------------------------------\n");
 	tmp = "abc";
+	printf("dup : %s\n", strdup(tmp));
+	printf("fdup : %s\n", tmp2 = ft_strdup(tmp));
+	printf("fdup : %s\n", ft_strdup(tmp2));
+	printf("\n");
+	tmp = "abcdefghijklmnopqstuvwxyz";
 	printf("dup : %s\n", strdup(tmp));
 	printf("fdup : %s\n", tmp2 = ft_strdup(tmp));
 	printf("fdup : %s\n", ft_strdup(tmp2));
@@ -518,15 +600,25 @@ void	check_strdup(void)
 	printf("fdup : %s\n", tmp2 = ft_strdup(tmp));
 	printf("fdup : %s\n", ft_strdup(tmp2));
 	printf("\n");
+	tmp = "\0";
+	printf("dup : %s\n", strdup(tmp));
+	printf("fdup : %s\n", tmp2 = ft_strdup(tmp));
+	printf("fdup : %s\n", ft_strdup(tmp2));
+	printf("\n");
+	tmp = "abcd\0fgh";
+	printf("dup : %s\n", strdup(tmp));
+	printf("fdup : %s\n", tmp2 = ft_strdup(tmp));
+	printf("fdup : %s\n", ft_strdup(tmp2));
+	printf("\n");
 }
 
 int	main(void)
 {
-	check_strlen();
-	check_strcpy();
-	check_strcmp();
-	check_write();
-	check_read();
-	check_strdup();
+//	check_strlen();
+//	check_strcpy();
+//	check_strcmp();
+//	check_write();
+//	check_read();
+//	check_strdup();
 	return (0);
 }

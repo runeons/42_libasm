@@ -1,17 +1,14 @@
 ; ----------------------------------------------------------------------------------------
-; To assemble and run:
-;	nasm -felf64 ft_write.s && gcc main_write.c ft_write.o && ./a.out
-; Prototype:
 ;	ssize_t write(int fd, const void *buf, size_t count)
 ; ----------------------------------------------------------------------------------------
 
-	global		ft_write
-	extern		__errno_location
+		global	ft_write
+		extern	__errno_location
 
-	section		.text
-
+		section	.text
 ft_write:
 		push	rbx
+		mov	rbx, 0
 
 write:
 		mov	rax, 1

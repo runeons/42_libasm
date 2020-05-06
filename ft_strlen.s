@@ -1,13 +1,10 @@
 ; ----------------------------------------------------------------------------------------
-; To assemble and run:
-;	nasm -felf64 ft_strlen.s && gcc main_strlen.c ft_strlen.o && ./a.out
-;
+;	size_t	ft_strlen(const char *s);
 ; ----------------------------------------------------------------------------------------
 
-          global	ft_strlen
+		global	ft_strlen
 
-          section	.text
-
+  	        section	.text
 ft_strlen:
 		mov	rax, 0		; rax (because return value) holds the len
 		cmp	rdi, 0
