@@ -1,7 +1,5 @@
 # 42 Libasm
 
-#### Usage
-    make && ./libasm_test
 #### Overview
 This is a 42 project whose aim is to get familiar with assembly language.
 #### Introduced concepts
@@ -22,3 +20,5 @@ This is a 42 project whose aim is to get familiar with assembly language.
 - compile with nasm
 - No inline ASM
 
+#### Usage
+    make && ./libasm_test
