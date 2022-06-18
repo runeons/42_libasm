@@ -1,5 +1,7 @@
 # 42 Libasm
 
+#### Usage
+    make && ./libasm_test
 #### Overview
     This is a 42 project whose aim is to get familiar with assembly language.
 #### Description
@@ -20,5 +22,4 @@
     - Intel syntax (vs. AT&T)
     - compile with nasm
     - No inline ASM
-#### Usage
-    make && ./libasm_test
+
