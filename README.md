@@ -3,10 +3,10 @@
 #### Usage
     make && ./libasm_test
 #### Overview
-    This is a 42 project whose aim is to get familiar with assembly language.
+This is a 42 project whose aim is to get familiar with assembly language.
 #### Introduced concepts
-⭐  Memory registers  
-⭐  ASM instructions
+⭐ &nbsp;&nbsp;&nbsp;&nbsp; Memory registers  
+⭐ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ASM instructions
 #### Description
 - Write an ASM 64 bits library that contains the following functions :
     - ft_strlen
