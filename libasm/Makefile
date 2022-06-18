@@ -2,20 +2,42 @@
 #*** GENERAL ****************************************************************#
 #****************************************************************************#
 
-NAME 		=	libasm_checker
+NAME 		=	libasm.a
 
-CPL 		= 	clang
-FLAGS 		= 	-Wall -Wextra -Werror
-
-LIB_DIR		=	-L libasm
-LIB			=	-lasm
+CPL 		= 	nasm
+FLAGS 		= 	-felf64
 
 
 #****************************************************************************#
 #*** SRCS *******************************************************************#
 #****************************************************************************#
 
-MAIN		= 	main.c
+SRCS_DIR	= 	./srcs/
+
+SRCS_FILES	=				\
+				ft_read.s   \
+				ft_strcmp.s \
+				ft_strcpy.s \
+				ft_strdup.s \
+				ft_strlen.s \
+				ft_write.s  \
+
+SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))
+
+
+#****************************************************************************#
+#*** OBJS *******************************************************************#
+#****************************************************************************#
+
+OBJS_DIR 	=	./objs/
+
+OBJS_FILES	=	$(patsubst %.s, %.o, $(SRCS_FILES))
+
+OBJS		=	$(addprefix $(OBJS_DIR), $(OBJS_FILES))
+
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.s
+	@ mkdir -p $(dir $@)
+	@ $(CPL) $(FLAGS) $< -o $@
 
 
 #****************************************************************************#
@@ -24,16 +46,14 @@ MAIN		= 	main.c
 
 all		: $(NAME)
 
-$(NAME)	: $(MAIN)
-	@ make -C libasm/ --no-print-directory
-	@ $(CPL) $(FLAGS) $< $(LIB_DIR) $(LIB) -o $@
+$(NAME)	: $(SRCS) $(OBJS)
+	@ ar rcs $(NAME) $(OBJS)
 
 clean	:
-	@ make clean -C libasm/ --no-print-directory
-	@ rm -f $(NAME)
+	@ rm -rf $(OBJS_DIR)
 
 fclean	: clean
-	@ make fclean -C libasm/ --no-print-directory
+	@ rm -f $(NAME)
 
 re		: fclean all
 
