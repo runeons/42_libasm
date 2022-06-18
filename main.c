@@ -147,8 +147,8 @@ void	check_write(void)
 	char	*str = NULL;
 	char	buf[11] = "abcdefghij";
 
-	fd = open("./test", O_RDWR);
-	fd2 = open("./test", O_RDONLY);
+	fd = open("./utils_test_file", O_RDWR);
+	fd2 = open("./utils_test_file", O_RDONLY);
 	
 	printf("----------------------------------\n");
 	printf(GREEN"ft_write :"RESET"\n");
