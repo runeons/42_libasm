@@ -40,7 +40,7 @@ void	check_strlen(void)
 	printf("	flen : %zu\n", ft_strlen(s5));
 	printf("	len : SEGMENTATION FAULT\n");
 	//printf("	len : %zu\n", strlen(NULL));
-	//printf("	flen : %zu\n", ft_strlen(NULL));
+	printf("	flen : %zu\n", ft_strlen(NULL));
 }
 
 void	check_strcpy(void)
@@ -58,7 +58,7 @@ void	check_strcpy(void)
 	printf("	 fcpy: %s\n", ft_strcpy(buff, "d\0ef"));
 	printf("	 cpy: SEGMENTATION FAULT\n");
 	//printf("	 cpy: %s\n", strcpy(buff, NULL));
-	//printf("	 fcpy: %s\n", ft_strcpy(buff, NULL));
+	printf("	 fcpy: %s\n", ft_strcpy(buff, NULL));
 	printf("\n");
 }
 
@@ -80,8 +80,6 @@ void	check_strcmp(void)
 	printf("[00]\n");
 	printf("	cmp : %i\n", strcmp(s1, s2));
 	printf("	fcmp : %i\n", ft_strcmp(s1, s2));
-	printf("	cmp : %i\n", strcmp("hello", "helloworld"));
-	printf("	fcmp : %i\n", ft_strcmp("hello", "helloworld"));
 	printf("[01]\n");
 	printf("	cmp : %i\n", strcmp(s1, s1));
 	printf("	fcmp : %i\n", ft_strcmp(s1, s1));
@@ -121,15 +119,15 @@ void	check_strcmp(void)
 	printf("[13]\n");
 	printf("	cmp : SEGMENTATION FAULT\n");
 //	printf("	cmp : %i\n", strcmp(s3, NULL));
-	//printf("	fcmp : %i\n", ft_strcmp(s3, NULL));
+	printf("	fcmp : %i\n", ft_strcmp(s3, NULL));
 	printf("[14]\n");
 	printf("	cmp : SEGMENTATION FAULT\n");
 //	printf("	cmp : %i\n", strcmp(NULL, NULL));
-	//printf("	fcmp : %i\n", ft_strcmp(NULL, NULL));
+	printf("	fcmp : %i\n", ft_strcmp(NULL, NULL));
 	printf("[15]\n");
 	printf("	cmp : SEGMENTATION FAULT\n");
 //	printf("	cmp : %i\n", strcmp(NULL, s3));
-	//printf("	fcmp : %i\n", ft_strcmp(NULL, s3));
+	printf("	fcmp : %i\n", ft_strcmp(NULL, s3));
 	printf("\n");
 	printf("[16]\n");
 	printf("	cmp : %i\n", strcmp(s0, s3));
@@ -636,7 +634,7 @@ void	check_strdup(void)
 	printf("\n");
 	printf("	dup : SEGMENTATION FAULT\n");
 //	printf("	dup : %s\n", strdup(NULL));
-	//printf("	fdup : %s\n", ft_strdup(NULL));
+	printf("	fdup : %s\n", ft_strdup(NULL));
 	printf("\n");
 	printf("	dup : %s\n", strdup(s4));
 	printf("	fdup : %s\n", ft_strdup(s4));
