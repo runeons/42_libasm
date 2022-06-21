@@ -1,5 +1,5 @@
 # 42 Libasm
-
+💙 First ASM project
 #### Overview
 This is a 42 project whose aim is to get familiar with assembly language.
 #### Introduced concepts
